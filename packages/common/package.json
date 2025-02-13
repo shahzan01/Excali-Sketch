@@ -1,0 +1,24 @@
+{
+  "name": "@repo/common",
+  "version": "1.0.0",
+  "main": "index.js",
+  "exports": {
+    "./userSchema": "./src/schemas/userSchema.ts",
+    "./roomSchema": "./src/schemas/roomSchema.ts"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "zod": "^3.24.1"
+  }
+}
