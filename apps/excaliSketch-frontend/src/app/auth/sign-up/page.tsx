@@ -6,10 +6,10 @@ import Link from "next/link";
 import { Button } from "@repo/ui/button";
 import { Input } from "@repo/ui/input";
 import { useToast } from "@repo/ui/use-toast";
-import { useAuth } from "./../../../lib/auth";
+import { useAuth } from "../../../lib/auth";
 import { Loader2 } from "lucide-react";
 import axios from "axios";
-import { BACKEND_URL } from "./../../config";
+import { BACKEND_URL } from "../../config";
 import Image from "next/image";
 
 export default function SignUp() {

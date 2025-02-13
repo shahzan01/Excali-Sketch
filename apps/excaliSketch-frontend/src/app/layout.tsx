@@ -8,8 +8,8 @@ import { ToastContainer } from "@/components/ui/toastContainer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Room Management App",
-  description: "Create and manage your rooms",
+  title: "ExcaliSketch ",
+  description: "Collaborative Whiteboarding Reimagined",
 };
 
 export default function RootLayout({
