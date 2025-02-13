@@ -1,0 +1,33 @@
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { ToastProvider, ToastViewport } from "../components/ui/toast";
+import { ThemeProvider } from "../components/theme-provider";
+import { ToastContainer } from "@/components/ui/toastContainer";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Room Management App",
+  description: "Create and manage your rooms",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider>
+          <ToastProvider>
+            {children}
+            <ToastContainer></ToastContainer>
+            <ToastViewport></ToastViewport>
+          </ToastProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}

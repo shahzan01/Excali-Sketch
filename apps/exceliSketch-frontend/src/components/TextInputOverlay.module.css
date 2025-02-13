@@ -1,0 +1,11 @@
+.inputOverlay {
+  position: fixed; /* Missing crucial positioning */
+  top: var(--input-top);
+  left: var(--input-left);
+  transform: translateY(-50%);
+  z-index: 9999; /* Must be higher than canvas z-index */
+}
+.textInput {
+  @apply p-0 text-[25px]; /* Tailwind class for 30px font size */
+  font-family: 'Comic Sans MS', cursive;
+}

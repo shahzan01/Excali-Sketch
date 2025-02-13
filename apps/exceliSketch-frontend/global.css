@@ -1,0 +1,12 @@
+/* Global CSS */
+canvas {
+    touch-action: none;
+    image-rendering: crisp-edges;
+  }
+  
+  .text-input-overlay {
+    position: fixed;
+    z-index: 10000;
+    transform: translate3d(0,0,0);
+  }
+  
