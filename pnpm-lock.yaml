@@ -194,6 +194,19 @@ importers:
         specifier: ^5.7.3
         version: 5.7.3
 
+  packages/common:
+    dependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.2
+    devDependencies:
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
+
   packages/db:
     dependencies:
       '@prisma/client':
