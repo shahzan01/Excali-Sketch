@@ -18,7 +18,7 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
 
-  apps/exceliSketch-frontend:
+  apps/excaliSketch-frontend:
     dependencies:
       '@radix-ui/react-dialog':
         specifier: ^1.1.6
