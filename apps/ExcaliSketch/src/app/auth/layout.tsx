@@ -7,11 +7,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider>
-      <ToastProvider>
-        {children} <ToastContainer></ToastContainer>{" "}
-        <ToastViewport></ToastViewport>
-      </ToastProvider>
-    </ThemeProvider>
+    <ToastProvider>
+      {children} <ToastContainer></ToastContainer>{" "}
+      <ToastViewport></ToastViewport>
+    </ToastProvider>
   );
 }
