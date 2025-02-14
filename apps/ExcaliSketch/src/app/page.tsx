@@ -75,13 +75,19 @@ export default function Home() {
                   Start Drawing <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="hover:scale-105 transition-all duration-300"
+              <Link
+                href="https://drive.google.com/file/d/1ofiLr19VXA27T3ZyPH1qwzF64n8AkRGK/view"
+                target="_blank"
               >
-                Watch Demo
-              </Button>
+                {" "}
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="hover:scale-105 transition-all duration-300"
+                >
+                  Watch Demo
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
