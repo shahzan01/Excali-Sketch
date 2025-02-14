@@ -1,9 +1,9 @@
 import dotenv from "dotenv";
 import path from "path";
-dotenv.config({
-  path: path.resolve(__dirname, ".env"),
-});
+
+dotenv.config();
+
 export const BACKEND_URL =
-  process.env.BACKEND_URL || "https://excali-sketch-api.onrender.com";
+  (process.env.NEXT_PUBLIC_BACKEND_URL as string) || "http://localhost:5000";
 export const WS_URL =
-  process.env.WS_URL || "https://excali-sketch-api.onrender.com";
+  (process.env.NEXT_PUBLIC_BACKEND_URL as string) || "http://localhost:5000";
