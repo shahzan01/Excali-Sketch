@@ -1,7 +1,8 @@
 import { WebSocketServer, WebSocket } from "ws";
 import jwt from "jsonwebtoken";
 
-import prisma from "@repo/db";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 import dotenv from "dotenv";
 
 dotenv.config();

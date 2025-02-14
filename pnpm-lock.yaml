@@ -126,12 +126,9 @@ importers:
 
   apps/backend:
     dependencies:
-      '@repo/common':
-        specifier: workspace:*
-        version: link:../../packages/common
-      '@repo/db':
-        specifier: workspace:*
-        version: link:../../packages/db
+      '@prisma/client':
+        specifier: 6.3.1
+        version: 6.3.1(prisma@6.3.1(typescript@5.7.3))(typescript@5.7.3)
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -193,44 +190,6 @@ importers:
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
-      typescript:
-        specifier: ^5.7.3
-        version: 5.7.3
-
-  packages/common:
-    dependencies:
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.2
-    devDependencies:
-      typescript:
-        specifier: ^5.7.3
-        version: 5.7.3
-
-  packages/db:
-    dependencies:
-      '@prisma/client':
-        specifier: 6.3.0
-        version: 6.3.0(prisma@6.3.1(typescript@5.7.3))(typescript@5.7.3)
-      dotenv:
-        specifier: ^16.4.7
-        version: 16.4.7
-      prisma:
-        specifier: ^6.3.0
-        version: 6.3.1(typescript@5.7.3)
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@types/node':
-        specifier: ^22.10.10
-        version: 22.13.0
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
@@ -733,8 +692,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@prisma/client@6.3.0':
-    resolution: {integrity: sha512-BY3Fi28PUSk447Bpv22LhZp4HgNPo7NsEN+EteM1CLDnLjig5863jpW+3c3HHLFmml+nB/eJv1CjSriFZ8z7Cg==}
+  '@prisma/client@6.3.1':
+    resolution: {integrity: sha512-ARAJaPs+eBkemdky/XU3cvGRl+mIPHCN2lCXsl5Vlb0E2gV+R6IN7aCI8CisRGszEZondwIsW9Iz8EJkTdykyA==}
     engines: {node: '>=18.18'}
     peerDependencies:
       prisma: '*'
@@ -3833,7 +3792,7 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@prisma/client@6.3.0(prisma@6.3.1(typescript@5.7.3))(typescript@5.7.3)':
+  '@prisma/client@6.3.1(prisma@6.3.1(typescript@5.7.3))(typescript@5.7.3)':
     optionalDependencies:
       prisma: 6.3.1(typescript@5.7.3)
       typescript: 5.7.3

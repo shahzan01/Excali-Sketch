@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
 import authMiddleware from "../middlewares/authMiddleware";
 import { roomControler } from "../controllers/roomController";
-import { createRoomSchema } from "@repo/common/roomSchema";
+import { createRoomSchema } from "./../schema/roomSchema";
 import { validateInput } from "../middlewares/validateInput";
 const router: Router = Router();
 

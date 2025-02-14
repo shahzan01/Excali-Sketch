@@ -1,4 +1,5 @@
-import prisma from "@repo/db";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export class roomServices {
   static async create(data: { slug: string; userId: string }) {

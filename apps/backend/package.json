@@ -14,8 +14,7 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
-    "@repo/common": "workspace:*",
-    "@repo/db": "workspace:*",
+    "@prisma/client": "6.3.1",
     "@repo/typescript-config": "workspace:*",
     "@types/bcrypt": "^5.0.2",
     "@types/cookie-parser": "^1.4.8",

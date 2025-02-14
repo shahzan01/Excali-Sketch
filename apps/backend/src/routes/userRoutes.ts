@@ -2,7 +2,7 @@ import { Router } from "express";
 import authMiddleware from "../middlewares/authMiddleware";
 import { UserController } from "../controllers/userController";
 import { validateInput } from "../middlewares/validateInput";
-import { userLoginSchema, userSignupSchema } from "@repo/common/userSchema";
+import { userLoginSchema, userSignupSchema } from "./../schema/userSchema";
 const router: Router = Router();
 
 router.post("/signup", validateInput(userSignupSchema), UserController.signup);
