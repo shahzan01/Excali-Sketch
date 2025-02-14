@@ -1,38 +1,56 @@
 import { Request, Response } from "express";
 import { UserService } from "../services/userService";
+import { ServiceResponse } from "./../types/types"; // Import types
 
 export class UserController {
-  static async signup(
-    req: Request<{}, {}, { email: string; password: string; name: string }>,
-    res: Response
-  ) {
+  static async signup(req: Request, res: Response) {
     try {
-      const user = await UserService.signup(req.body);
-      res.status(201).json(user);
+      const result: ServiceResponse = await UserService.signup(req.body);
+      res.status(result.success ? 201 : 400).json(result);
     } catch (error) {
-      res.status(400).json({ error: error });
+      const err = error as Error;
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: err.message,
+      });
     }
   }
 
   static async login(req: Request, res: Response) {
     try {
-      const token = await UserService.login(req.body);
-      res.status(200).json({ token });
+      const result: ServiceResponse = await UserService.login(req.body);
+      res.status(result.success ? 200 : 400).json(result);
     } catch (error) {
-      res.status(400).json({ error: error });
+      const err = error as Error;
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: err.message,
+      });
     }
   }
 
   static async getRooms(req: Request, res: Response) {
     try {
-      const data = { userId: req.user?.userId as string };
-      if (!data || data.userId == "") {
-        throw new Error("Unauthorized");
+      const userId = req.user?.userId as string;
+      if (!userId) {
+        res.status(401).json({
+          success: false,
+          message: "Unauthorized: User not authenticated",
+        });
+        return;
       }
-      const rooms = await UserService.getRooms(data);
-      res.status(200).json(rooms);
+
+      const result: ServiceResponse = await UserService.getRooms(userId);
+      res.status(result.success ? 200 : 400).json(result.data);
     } catch (error) {
-      res.status(400).json({ error: error });
+      const err = error as Error;
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: err.message,
+      });
     }
   }
 }

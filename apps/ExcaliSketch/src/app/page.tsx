@@ -32,7 +32,6 @@ export default function Home() {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <ThemeToggle />
             <Link href="/auth/sign-in">
               <Button variant="ghost" className="text-black dark:text-white">
                 Sign In

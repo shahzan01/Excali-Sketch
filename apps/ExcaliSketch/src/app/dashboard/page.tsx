@@ -61,7 +61,9 @@ export default function Dashboard() {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = res.data;
-      setRooms(data.length > 0 ? data : []);
+
+      setRooms(data.rooms.length > 0 ? data.rooms : []);
+      console.log(rooms);
     } catch (error) {
       toast({
         variant: "destructive",

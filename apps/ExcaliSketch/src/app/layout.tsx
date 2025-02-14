@@ -19,15 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider>
-          <ToastProvider>
-            {children}
-            <ToastContainer></ToastContainer>
-            <ToastViewport></ToastViewport>
-          </ToastProvider>
-        </ThemeProvider>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
