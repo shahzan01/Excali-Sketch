@@ -15,14 +15,20 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
+      const allowedOrigins = [
+        "https://excali-sketch-frontend.vercel.app",
+        "http://localhost:3000",
+      ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
+
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
