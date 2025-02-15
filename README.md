@@ -1,58 +1,77 @@
-# Turborepo Tailwind CSS starter
+# Excali Sketch
 
-This Turborepo starter is maintained by the Turborepo core team.
+Excali Sketch is a real-time collaborative canvas application inspired by Excalidraw. Built entirely using a raw canvas library, it features custom shapes and text logic implemented from scratch—no external drawing libraries required.
 
-## Using this example
+## Features
 
-Run the following command:
+- **Real-time Collaboration:** Uses WebSockets with an Express backend to enable seamless multi-user drawing sessions.
+- **Custom Shapes & Text:** Implements unique drawing features with custom shapes and text logic for enhanced performance.
+- **Modern Tech Stack:** Built with Next.js and managed via Turborepo for efficient monorepo management. The frontend is deployed on Vercel and the backend on Render.
+- **Room Management:** Easily create, join, and manage collaborative drawing sessions.
 
-```sh
-npx create-turbo@latest -e with-tailwind
-```
+## Demo
 
-## What's inside?
+- **Live Website:** [Excali-Sketch](https://excali-sketch-frontend.vercel.app/)
+- **Demo Video:** [Gdrive](https://drive.google.com/file/d/1ofiLr19VXA27T3ZyPH1qwzF64n8AkRGK/view)
 
-This Turborepo includes the following packages/apps:
+## Installation
 
-### Apps and Packages
+To run Excali Sketch locally, follow these steps:
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+1. **Clone the repository:**
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+  ```bash
+git clone https://github.com/shahzan01/Excali-Sketch
+cd excali-sketch
+   ```
 
-### Building packages/ui
 
-This example is set up to produce compiled styles for `ui` components into the `dist` directory. The component `.tsx` files are consumed by the Next.js apps directly using `transpilePackages` in `next.config.js`. This was chosen for several reasons:
+2. **Install dependencies :**
 
-- Make sharing one `tailwind.config.js` to apps and packages as easy as possible.
-- Make package compilation simple by only depending on the Next.js Compiler and `tailwindcss`.
-- Ensure Tailwind classes do not overwrite each other. The `ui` package uses a `ui-` prefix for it's classes.
-- Maintain clear package export boundaries.
+  ```bash
+pnpm install
+   ```
+3. **Set Up Environment Variables**
+   Create a `.env` files in the apps/ExcaliSketch and apps/backend directory using the provided `.env.example`.
 
-Another option is to consume `packages/ui` directly from source without building. If using this option, you will need to update the `tailwind.config.js` in your apps to be aware of your package locations, so it can find all usages of the `tailwindcss` class names for CSS compilation.
+   ```
+   NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
+   NEXT_PUBLIC_WS_URL=http://localhost:5000
 
-For example, in [tailwind.config.js](packages/tailwind-config/tailwind.config.js):
+   ```
+   ```
+   USER_JWT_SECRET="<Your user JWT Secret>"
+   DATABASE_URL=<Your PostgreSQL connection string>
 
-```js
-  content: [
-    // app content
-    `src/**/*.{js,ts,jsx,tsx}`,
-    // include packages if not transpiling
-    "../../packages/ui/*.{js,ts,jsx,tsx}",
-  ],
-```
+   ```
+4. **Run Database Migrations and Generate Prisma Client**
+   ```bash
+   cd apps/backend && npx prisma migrate dev
+   ```
 
-If you choose this strategy, you can remove the `tailwindcss` and `autoprefixer` dependencies from the `ui` package.
+5. **Run the application:**
+   ```bash
+   cd ../../ && npm run dev
+   ```
 
-### Utilities
 
-This Turborepo has some additional tools already setup for you:
+## Tech Stack
 
-- [Tailwind CSS](https://tailwindcss.com/) for styles
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+| Component         | Tools & Technologies                         |
+|-------------------|----------------------------------------------|
+| **Frontend**      | Next.js, React, Turborepo, Vercel              |
+| **Backend**       | Express, WebSockets, Render                    |
+| **Canvas Logic**  | Custom implementation using raw canvas    |
+| **Room Management** | Custom logic                                   |
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and open a pull request for any feature improvements, bug fixes, or documentation enhancements.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contact
+
+For any questions or suggestions, feel free to reach out at [m.shahzan2003@gmail.com](mailto:m.shahzan2003@gmail.com).
