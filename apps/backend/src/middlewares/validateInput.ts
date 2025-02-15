@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { ZodSchema, ZodError } from "zod";
+import { ZodSchema } from "zod";
 
 export const validateInput = (
   schema: ZodSchema,
@@ -10,8 +10,10 @@ export const validateInput = (
 
     if (!result.success) {
       res.status(400).json({
+        success: false,
+        message: result.error.errors[0]?.message,
         errors: result.error.errors.map((err) => ({
-          path: err.path,
+          field: err.path.join("."),
           message: err.message,
         })),
       });

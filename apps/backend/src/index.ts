@@ -8,8 +8,22 @@ import { initWebSocket } from "./wsHandler";
 
 const app = express();
 
+const allowedOrigins = [
+  "https://excali-sketch-frontend.vercel.app",
+  "http://localhost:3000", // For local development
+];
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 app.use(express.json());
-app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
   res.json({ msg: "hello there" });

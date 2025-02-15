@@ -7,11 +7,16 @@ const router: Router = Router();
 
 router.post(
   "/create/:slug",
-  authMiddleware,
   validateInput(createRoomSchema, "params"),
+  authMiddleware,
   roomControler.create
 );
-router.post("/join/:slug", authMiddleware, roomControler.join);
+router.post(
+  "/join/:slug",
+
+  authMiddleware,
+  roomControler.join
+);
 router.get("/:roomId", authMiddleware, roomControler.getChats);
 router.delete("/:roomId", authMiddleware, roomControler.delete);
 export default router;
