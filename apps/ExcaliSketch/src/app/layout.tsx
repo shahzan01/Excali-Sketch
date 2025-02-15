@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ToastProvider, ToastViewport } from "../components/ui/toast";
 import { ThemeProvider } from "../components/theme-provider";
 import { ToastContainer } from "@/components/ui/toastContainer";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
