@@ -38,6 +38,6 @@ model Chat {
 model RoomState {
   id     String   @id @default(uuid())
   roomId Int      @unique
-  room   Room     @relation(references: [id], fields: [roomId])
+  room   Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
   shapes String[]
 }

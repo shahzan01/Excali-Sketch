@@ -10,7 +10,7 @@ const app = express();
 
 const allowedOrigins = [
   "https://excali-sketch-frontend.vercel.app",
-  "http://localhost:3000", // For local development
+  "http://localhost:3000",
 ];
 app.use(
   cors({

@@ -38,14 +38,15 @@ export class roomServices {
       const roomData = await prisma.room.findFirst({
         where: { id: data.roomId },
       });
+
       if (!roomData) {
         throw new Error("Room not found");
       }
 
       const res = await prisma.room.delete({
         where: {
-          id: data.roomId,
-          adminId: data.admin,
+          id: roomData.id,
+          adminId: roomData.adminId,
         },
       });
 
