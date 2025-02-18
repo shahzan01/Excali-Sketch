@@ -627,8 +627,8 @@ const ExcaliSketch: React.FC<{ roomId: number }> = ({ roomId }) => {
   return (
     <>
       {loading ? (
-        <div className=" w-screen h-screen flex justify-center items-center">
-          Loading...
+        <div className="min-h-screen flex items-center justify-center ">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary border-black"></div>
         </div>
       ) : (
         <div

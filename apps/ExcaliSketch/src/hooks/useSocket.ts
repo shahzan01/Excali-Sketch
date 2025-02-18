@@ -57,5 +57,5 @@ export function useSocket() {
     };
   }, [token]);
 
-  return { socket, loading };
+  return { socket, loading, setLoading };
 }

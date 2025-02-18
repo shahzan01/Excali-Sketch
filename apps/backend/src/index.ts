@@ -5,9 +5,22 @@ import cors from "cors";
 import userRoutes from "./routes/userRoutes";
 import roomRoutes from "./routes/roomRoutes";
 import { initWebSocket } from "./wsHandler";
+import morgan from "morgan";
+import path from "path";
+const rfs = require("rotating-file-stream");
 
 const app = express();
 
+//logs
+const logDir = path.join(__dirname, "logs");
+
+const logStream = rfs.createStream("requestLogs.log", {
+  interval: "1d",
+  path: logDir,
+});
+app.use(morgan("common", { stream: logStream }));
+
+//cors
 const allowedOrigins = [
   "https://excali-sketch-frontend.vercel.app",
   "http://localhost:3000",
@@ -32,7 +45,7 @@ app.use(
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
-  res.json({ msg: "hello there" });
+  res.status(200).json({ msg: "hello there" });
 });
 
 app.use("/user", userRoutes);
