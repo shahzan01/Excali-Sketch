@@ -55,7 +55,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-screen flex justify-center items-center">
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-indigo-100 opacity-70 " />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-300 to-indigo-100 opacity-70 " />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
           <div
             className="text-center transform transition-all duration-1000 ease-out"
@@ -146,20 +147,30 @@ export default function Home() {
               </p>
             </div>
             <div className="flex gap-4">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="hover:scale-105 transition-transform duration-300"
+              <Link
+                href={"https://www.linkedin.com/in/mohd-shahzan1/"}
+                target="_blank"
               >
-                Try for Free
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className=" border-white hover:bg-white/10 hover:scale-105 transition-transform duration-300"
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className=" border-white hover:bg-white/10 hover:scale-105 transition-transform duration-300 text-white"
+                >
+                  Linkedin
+                </Button>
+              </Link>
+              <Link
+                href={"https://github.com/shahzan01/Excali-Sketch"}
+                target="_blank"
               >
-                Contact Sales
-              </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className=" border-white text-white hover:bg-white/10 hover:scale-105 transition-transform duration-300"
+                >
+                  Github
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
