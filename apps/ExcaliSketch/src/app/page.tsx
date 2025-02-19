@@ -33,12 +33,18 @@ export default function Home() {
           </div>
           <div className="flex items-center space-x-4">
             <Link href="/auth/sign-in">
-              <Button variant="ghost" className="text-black dark:text-white">
+              <Button
+                variant="ghost"
+                className="text-black dark:text-white hover:scale-105 transition-all duration-300  hover:text-blue-400"
+              >
                 Sign In
               </Button>
             </Link>
             <Link href="/auth/sign-up">
-              <Button variant="ghost" className="text-black dark:text-white">
+              <Button
+                variant="ghost"
+                className="text-black dark:text-white hover:scale-105 transition-all duration-300  hover:text-blue-400"
+              >
                 Sign Up
               </Button>
             </Link>
@@ -47,9 +53,9 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative">
+      <section className="relative h-screen flex justify-center items-center">
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-indigo-100 opacity-70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-indigo-100 opacity-70 " />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
           <div
             className="text-center transform transition-all duration-1000 ease-out"
@@ -70,7 +76,7 @@ export default function Home() {
               <Link href="/dashboard">
                 <Button
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 animate-pulse-shadow"
+                  className="bg-blue-500 hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 animate-pulse-shadow"
                 >
                   Start Drawing <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -83,7 +89,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="hover:scale-105 transition-all duration-300"
+                  className="hover:scale-105 transition-all duration-300 border-2 border-gray-300 hover:border-gray-600"
                 >
                   Watch Demo
                 </Button>
@@ -94,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-muted/50 relative overflow-hidden">
+      <section className="py-24 bg-muted/50 relative overflow-hidden bg-white text-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-text">

@@ -18,6 +18,7 @@ const limiter = rateLimit({
 const rfs = require("rotating-file-stream");
 
 const app = express();
+
 app.set("trust proxy", 1);
 
 //logs
@@ -38,11 +39,11 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      console.log("Incoming Request from:", origin); // Debugging log
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        console.log("Blocked by CORS:", origin); // Debugging log
         callback(new Error("Not allowed by CORS"));
       }
     },
@@ -51,14 +52,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
-app.options("*", (req: Request, res: Response) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.sendStatus(200);
-});
 
 app.use(limiter);
 app.use(morgan("common", { stream: logStream }));

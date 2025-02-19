@@ -603,7 +603,7 @@ const ExcaliSketch: React.FC<{ roomId: number }> = ({ roomId }) => {
       sendToDB.current = true;
       isManualUpdate.current = true;
       setCurrentShape(null);
-      if (!lockMode && tool != "eraser") {
+      if (!lockMode && tool != "eraser" && tool != "draw") {
         setTool("select");
       }
     }
