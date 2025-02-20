@@ -132,20 +132,6 @@ export default function SignIn() {
                 "Sign in"
               )}
             </Button>
-            <Button
-              onClick={() => handleSubmit(undefined, true)}
-              className="w-full bg-gray-700 hover:bg-gray-800 text-white"
-              disabled={loading}
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Signing in
-                  as Guest...
-                </>
-              ) : (
-                "Guest Login"
-              )}
-            </Button>
           </form>
 
           <div className="mt-6 text-center">
