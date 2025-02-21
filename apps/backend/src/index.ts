@@ -1,4 +1,5 @@
 import "./types/express-augmentations";
+import cron from "node-cron";
 import express, { NextFunction, Request, Response } from "express";
 import { createServer } from "http";
 import cors from "cors";
@@ -8,6 +9,8 @@ import { initWebSocket } from "./wsHandler";
 import morgan from "morgan";
 import path from "path";
 import { rateLimit } from "express-rate-limit";
+import axios from "axios";
+
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000,
   limit: 50,
@@ -18,6 +21,8 @@ const limiter = rateLimit({
 const rfs = require("rotating-file-stream");
 
 const app = express();
+
+app.set("trust proxy", 1);
 
 //logs
 const logDir = path.join(__dirname, "logs");
@@ -70,4 +75,13 @@ initWebSocket(server);
 
 server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
+});
+
+cron.schedule("*/14 * * * *", async () => {
+  try {
+    const res = await axios.get(`http://localhost:10000`);
+    console.log(res.data);
+  } catch (e) {
+    console.error(e);
+  }
 });
