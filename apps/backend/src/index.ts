@@ -19,8 +19,6 @@ const rfs = require("rotating-file-stream");
 
 const app = express();
 
-app.set("trust proxy", 1);
-
 //logs
 const logDir = path.join(__dirname, "logs");
 
