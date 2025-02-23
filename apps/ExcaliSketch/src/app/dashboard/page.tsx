@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -44,7 +44,7 @@ export default function Dashboard() {
   const [roomToDelete, setRoomToDelete] = useState<string | null>(null);
   const router = useRouter();
   const { toast } = useToast();
-  const { logout, token } = useAuth();
+  const { logout, token, setToken } = useAuth();
 
   useEffect(() => {
     if (!token) {
@@ -52,7 +52,7 @@ export default function Dashboard() {
     } else {
       fetchRooms();
     }
-  }, []);
+  }, [token]);
 
   const fetchRooms = async () => {
     try {
@@ -63,8 +63,13 @@ export default function Dashboard() {
       const data = res.data;
 
       setRooms(data.rooms.length > 0 ? data.rooms : []);
-      console.log(rooms);
     } catch (error) {
+      //{"error":"Invalid or expired token."}
+      if (error instanceof AxiosError) {
+        if (error.status == 401) {
+          setToken("");
+        }
+      }
       toast({
         variant: "destructive",
         title: "Error",
