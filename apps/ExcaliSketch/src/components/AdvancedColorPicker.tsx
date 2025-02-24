@@ -42,7 +42,7 @@ export default function AdvancedColorPicker({
   }, [showPicker]);
 
   return (
-    <div className="relative" ref={pickerRef}>
+    <div className="relative" ref={pickerRef} title="Pick Color">
       {/* Color button */}
       <button
         className="w-8 h-8 rounded-lg border-2 p-2 m-0 mr-2 border-gray-400 shadow-md cursor-pointer"

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, RefObject } from "react";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -45,7 +46,8 @@ export default function Dashboard() {
   const router = useRouter();
   const { toast } = useToast();
   const { logout, token, setToken } = useAuth();
-
+  const joinRef = useRef<HTMLButtonElement>(null);
+  const createRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (!token) {
       router.push("/auth/sign-in");
@@ -68,13 +70,20 @@ export default function Dashboard() {
       if (error instanceof AxiosError) {
         if (error.status == 401) {
           setToken("");
+
+          toast({
+            variant: "destructive",
+            title: "Unauthorized",
+            description: "Please Login Again",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Error",
+            description: "Failed to fetch rooms",
+          });
         }
       }
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to fetch rooms",
-      });
     } finally {
       setLoading(false);
     }
@@ -99,6 +108,7 @@ export default function Dashboard() {
         description: "Room created successfully",
       });
     } catch (error) {
+      setNewRoomName("");
       toast({
         variant: "destructive",
         title: "Error",
@@ -131,6 +141,7 @@ export default function Dashboard() {
       sessionStorage.setItem("hasReloaded", "false");
       router.push(`/canvas/${data.room.id}`);
     } catch (error) {
+      setJoinRoomName("");
       toast({
         variant: "destructive",
         title: "Error",
@@ -186,10 +197,12 @@ export default function Dashboard() {
         {/* Navbar */}
         <nav className="border-b">
           <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <SiExcalidraw className=" w-10 h-10" />
-              <span className="text-2xl font-bold ">ExcaliSketch </span>
-            </div>
+            <Link href={"/"}>
+              <div className="flex items-center space-x-2">
+                <SiExcalidraw className=" w-10 h-10" />
+                <span className="text-2xl font-bold ">ExcaliSketch </span>
+              </div>
+            </Link>
             <div className="flex items-center space-x-4">
               <ThemeToggle />
               <Button variant="ghost" onClick={handleSignOut}>
@@ -213,7 +226,15 @@ export default function Dashboard() {
                     Create Room
                   </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent
+                  onKeyDown={(e: React.KeyboardEvent) => {
+                    if (e.key == "Enter") {
+                      if (createRef.current instanceof HTMLElement) {
+                        createRef.current.click();
+                      }
+                    }
+                  }}
+                >
                   <DialogHeader>
                     <DialogTitle>Create New Room</DialogTitle>
                     <DialogDescription>
@@ -228,6 +249,7 @@ export default function Dashboard() {
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button
+                        ref={createRef}
                         onClick={createRoom}
                         disabled={!newRoomName.trim()}
                       >
@@ -246,7 +268,15 @@ export default function Dashboard() {
                     Join Room
                   </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent
+                  onKeyDown={(e: React.KeyboardEvent) => {
+                    if (e.key == "Enter") {
+                      if (joinRef.current instanceof HTMLElement) {
+                        joinRef.current.click();
+                      }
+                    }
+                  }}
+                >
                   <DialogHeader>
                     <DialogTitle>Join Room</DialogTitle>
                     <DialogDescription>
@@ -261,6 +291,7 @@ export default function Dashboard() {
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button
+                        ref={joinRef}
                         onClick={() => {
                           joinRoom();
                         }}

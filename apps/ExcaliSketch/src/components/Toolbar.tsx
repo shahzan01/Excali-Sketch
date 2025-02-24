@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 
 import Link from "next/link";
-
+import { MdClass, MdClear } from "react-icons/md";
 import AdvancedColorPicker from "./AdvancedColorPicker";
 import { BiEraser } from "react-icons/bi";
 import { BsDiamond } from "react-icons/bs";
@@ -102,7 +102,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       name: "eraser",
       icon: <BiEraser />,
       activeIcon: <BiEraser />,
-      number: 0,
+      number: 9,
     },
   ];
 
@@ -163,6 +163,15 @@ const Toolbar: React.FC<ToolbarProps> = ({
           color={color}
           setColor={setColor}
         ></AdvancedColorPicker>
+        <div className="w-px h-8 bg-gray-300"></div>
+        <div title="Clear All">
+          <MdClear
+            className=" w-8 h-8  px-0 -ml-3 hover:text-red-600"
+            onClick={() => {
+              clear();
+            }}
+          />
+        </div>
       </div>
     </div>
   );

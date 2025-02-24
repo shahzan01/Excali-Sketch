@@ -1,7 +1,7 @@
 // src/components/ExcaliSketch.tsx
 "use client";
 import { wsData } from "@/models/wsData";
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { use, useEffect, useReducer, useRef, useState } from "react";
 import { Shape, Tool } from "../models/shape";
 import Toolbar from "./Toolbar";
 import Canvas from "./Canvas";
@@ -74,6 +74,7 @@ const ExcaliSketch: React.FC<{ roomId: number }> = ({ roomId }) => {
     let data: string[] = [];
     async function getShapesFroDB() {
       try {
+        setLoading(true);
         const url = `${BACKEND_URL}/room/${roomId}`;
         const res = await axios.get(url, {
           headers: { Authorization: `Bearer ${token}` },
@@ -92,6 +93,7 @@ const ExcaliSketch: React.FC<{ roomId: number }> = ({ roomId }) => {
         setShapes(newshapes);
         setLoading(false);
       } catch (e: any) {
+        setLoading(false);
         if (e.status == 404) {
           router.push("/dashboard");
           alert("Room does not exists");
@@ -112,6 +114,51 @@ const ExcaliSketch: React.FC<{ roomId: number }> = ({ roomId }) => {
       sessionStorage.setItem("hasReloaded", "true");
       window.location.reload();
     }
+  }, []);
+
+  useEffect(() => {
+    const eventHandler = (e: KeyboardEvent) => {
+      const key = e.key;
+      switch (key) {
+        case "0":
+          break;
+        case "1":
+          setTool("select");
+          break;
+        case "2":
+          setTool("rectangle");
+
+          break;
+        case "3":
+          setTool("diamond");
+          break;
+        case "4":
+          setTool("ellipse");
+          break;
+        case "5":
+          setTool("arrow");
+          break;
+        case "6":
+          setTool("line");
+          break;
+        case "7":
+          setTool("draw");
+          break;
+        case "8":
+          setTool("text");
+          break;
+        case "9":
+          setTool("eraser");
+          break;
+        default:
+      }
+    };
+
+    window.addEventListener("keydown", eventHandler);
+
+    return () => {
+      window.removeEventListener("keydown", eventHandler);
+    };
   }, []);
 
   useEffect(() => {
@@ -619,7 +666,7 @@ const ExcaliSketch: React.FC<{ roomId: number }> = ({ roomId }) => {
   };
 
   const clearShapes = () => {
-    // localStorage.removeItem("shapes");
+    sendToDB.current = true;
     isManualUpdate.current = true;
     setShapes([]);
   };
