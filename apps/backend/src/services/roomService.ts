@@ -43,10 +43,13 @@ export class roomServices {
         throw new Error("Room not found");
       }
 
-      const res = await prisma.room.delete({
+      const res = await prisma.room.update({
         where: {
           id: roomData.id,
           adminId: roomData.adminId,
+        },
+        data: {
+          isDeleted: true,
         },
       });
 

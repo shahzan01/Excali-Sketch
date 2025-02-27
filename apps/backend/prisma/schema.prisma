@@ -8,12 +8,13 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
-  name     String
-  email    String @unique
-  password String
-  chats    Chat[]
-  rooms    Room[]
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  chats     Chat[]
+  rooms     Room[]
+  createdAt DateTime @default(now())
 }
 
 model Room {
@@ -23,6 +24,7 @@ model Room {
   adminId   String
   admin     User       @relation(fields: [adminId], references: [id])
   chats     Chat[]
+  isDeleted Boolean    @default(false)
   RoomState RoomState?
 }
 

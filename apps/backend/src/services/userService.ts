@@ -85,7 +85,12 @@ export class UserService {
     try {
       const user = await prisma.user.findUnique({
         where: { id: userId },
-        include: { rooms: true },
+        include: {
+          rooms: {
+            where: { isDeleted: false },
+            omit: { isDeleted: true, adminId: true },
+          },
+        },
       });
       if (!user) return { success: false, message: "User not found" };
 

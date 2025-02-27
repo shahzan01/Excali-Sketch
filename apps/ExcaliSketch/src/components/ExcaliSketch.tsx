@@ -239,7 +239,7 @@ const ExcaliSketch: React.FC<{ roomId: number }> = ({ roomId }) => {
 
   const commitText = (ctx: CanvasRenderingContext2D) => {
     // Define the font size & family
-    const fontSize = 30; // Adjust as needed
+    const fontSize = 30;
     const fontFamily = "'Comic Sans MS', cursive"; // Example font
     ctx.font = `${fontSize}px ${fontFamily}`;
 
