@@ -30,7 +30,7 @@ export default function Video() {
       <div className="  max-w-5xl max-h-4xl mx-auto  px-2">
         <div className=" relative overflow-hidden rounded-xl shadow-2xl bg-black  ">
           <video
-            src="/demo.mp4"
+            src="/Demo.mp4"
             loop
             muted
             ref={videoRef}
