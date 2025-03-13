@@ -1,5 +1,5 @@
 "use client";
-
+import Video from "../components/videoComponent";
 import { Button } from "@repo/ui/button";
 import {
   ArrowRight,
@@ -82,10 +82,7 @@ export default function Home() {
                   Start Drawing <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link
-                href="https://drive.google.com/file/d/1ofiLr19VXA27T3ZyPH1qwzF64n8AkRGK/view"
-                target="_blank"
-              >
+              <Link href="#video">
                 {" "}
                 <Button
                   size="lg"
@@ -99,6 +96,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Video Section */}
+
+      <Video></Video>
 
       {/* Features Section */}
       <section className="py-24 bg-muted/50 relative overflow-hidden bg-white text-black">
