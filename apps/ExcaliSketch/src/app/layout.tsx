@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import { ToastProvider, ToastViewport } from "../components/ui/toast";
 import { ThemeProvider } from "../components/theme-provider";
 import { ToastContainer } from "@/components/ui/toastContainer";
-import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="light">
+    <html lang="en" suppressHydrationWarning className="Dark">
       <body className={inter.className}>
-        {children}
-        <Analytics />
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
