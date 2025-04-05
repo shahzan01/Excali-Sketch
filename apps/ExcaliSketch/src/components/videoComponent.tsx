@@ -30,7 +30,7 @@ export default function Video() {
       <div className="  max-w-5xl max-h-4xl mx-auto  px-2">
         <div className=" relative overflow-hidden rounded-xl shadow-2xl bg-black  ">
           <video
-            src="/Demo.mp4"
+            src="https://res.cloudinary.com/dv7ar9aca/video/upload/v1742505461/ExcaliSketch_wmwbha.mp4"
             loop
             muted
             ref={videoRef}
