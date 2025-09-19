@@ -1,6 +1,7 @@
 import React, { Ref, useEffect, useRef } from "react";
 
 export default function Video() {
+  const videoUrl = process.env.NEXT_PUBLIC_VIDEO_URL;
   const videoRef = useRef<HTMLVideoElement | null>(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,7 +31,7 @@ export default function Video() {
       <div className="  max-w-5xl max-h-4xl mx-auto  px-2">
         <div className=" relative overflow-hidden rounded-xl shadow-2xl bg-black  ">
           <video
-            src="https://res.cloudinary.com/dv7ar9aca/video/upload/v1742505461/ExcaliSketch_wmwbha.mp4"
+            src={videoUrl}
             loop
             muted
             ref={videoRef}
