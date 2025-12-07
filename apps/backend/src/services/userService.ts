@@ -1,11 +1,11 @@
 import bcrypt from "bcrypt";
-import { PrismaClient } from "@prisma/client";
+import {prisma} from "../config/prisma";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { ServiceResponse } from "./../types/types"; // Import types
 
 dotenv.config();
-const prisma = new PrismaClient();
+
 
 export class UserService {
   static async signup(data: {
