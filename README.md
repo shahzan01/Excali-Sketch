@@ -11,7 +11,7 @@ Excali Sketch is a real-time collaborative canvas application inspired by Excali
 
 ## Demo
 
-- **Live Website:** [Excali-Sketch](https://excali-sketch-frontend.vercel.app/)
+- **Live Website:** [Excali-Sketch](https://excali-sketch-frontend.vercel.app)
 - **Demo Video:** [Gdrive](https://drive.google.com/file/d/1ofiLr19VXA27T3ZyPH1qwzF64n8AkRGK/view)
 
 ## Installation
