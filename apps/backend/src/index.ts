@@ -38,6 +38,7 @@ const allowedOrigins = [
   "https://excali-sketch-frontend.vercel.app",
   "https://www.excali-sketch1.shop",
   "https://excali-sketch1.shop",
+  "https://excali-sketch.shahzan.online",
   "http://localhost:3000",
 ];
 
